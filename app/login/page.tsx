@@ -30,7 +30,7 @@ const Login = () => {
     setLoading(true);
     try {
       await signInWithEmailAndPassword(auth, data.email, data.password);
-      router.push("/dashboard");
+      router.push("/dashboard3");
     } catch (error) {
       console.error({ error });
     } finally {
