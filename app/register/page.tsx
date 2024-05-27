@@ -35,7 +35,7 @@ const Register = () => {
         data.password
       );
       console.log(res.user);
-      router.push("/dashboard");
+      router.push("/dashboard3");
     } catch (error) {
       console.error("Error registering:", error);
     } finally {
