@@ -64,7 +64,7 @@ const TabsControl = () => {
     <TabsContent value="all">
       <Card x-chunk="dashboard-06-chunk-0">
         <CardHeader>
-          <CardTitle>Products</CardTitle>
+          <CardTitle>Notes</CardTitle>
           <CardDescription>
             Manage your notes, view, edit and delete.
           </CardDescription>
@@ -72,11 +72,11 @@ const TabsControl = () => {
         <CardContent>
           <NotesTable />
         </CardContent>
-        <CardFooter>
+        {/* <CardFooter>
           <div className="text-xs text-muted-foreground">
             Showing <strong>1-10</strong> of <strong>32</strong> products
           </div>
-        </CardFooter>
+        </CardFooter> */}
       </Card>
     </TabsContent>
   );

@@ -13,6 +13,7 @@ import {
 } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import { signOut } from "firebase/auth";
+import useNotesStore from "@/store/store";
 
 interface Note {
   id: string;
@@ -23,10 +24,11 @@ interface Note {
 
 const Dashboard = () => {
   const { user } = useAuth();
-  const [notes, setNotes] = useState<Note[]>([]);
+  // const [notes, setNotes] = useState<Note[]>([]);
   const [newNote, setNewNote] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState<boolean>(false);
+  const { notes, setNotes } = useNotesStore();
   const router = useRouter();
 
   useEffect(() => {
@@ -43,6 +45,7 @@ const Dashboard = () => {
               (doc) => ({ id: doc.id, ...doc.data() } as Note)
             )
           );
+          console.log(notes);
         } catch (error: any) {
           console.error({ error });
           setError("Failed to fetch notes. " + error.message);

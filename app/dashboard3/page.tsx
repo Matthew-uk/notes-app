@@ -1,56 +1,29 @@
 "use client";
-import Image from "next/image";
-import Link from "next/link";
-import {
-  File,
-  Home,
-  LineChart,
-  ListFilter,
-  MoreHorizontal,
-  Package,
-  Package2,
-  PanelLeft,
-  PlusCircle,
-  Search,
-  Settings,
-  ShoppingCart,
-  Users2,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
 import DashNav from "@/components/ui/dashnav";
-import NotesTable from "@/components/table";
-import TabsControl from "@/components/tabsControl";
-import AddNote from "@/components/addNotes";
 import Header from "@/components/header";
 import { useEffect, useState } from "react";
 import { useAuth } from "@/context/authContext";
 import { useRouter } from "next/navigation";
 import { auth, db } from "@/firebaseConfig";
-import {
-  collection,
-  addDoc,
-  deleteDoc,
-  getDocs,
-  query,
-  where,
-  doc,
-} from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import TabsSection from "@/components/TabsSection";
 import SpinnerComponent from "@/components/spinner";
+import useNotesStore from "@/store/store";
 
 interface Note {
   id: string;
   text: string;
+  title: string;
   userId: string;
   createdAt: Date;
 }
 const Dashboard = () => {
   const { user } = useAuth();
-  const [notes, setNotes] = useState<Note[]>([]);
-  const [newNote, setNewNote] = useState("");
+  // const [notes, setNotes] = useState<Note[]>([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState<boolean>(false);
   const router = useRouter();
+  const { notes, setNotes } = useNotesStore();
 
   useEffect(() => {
     const fetchNotes = async () => {
@@ -75,9 +48,12 @@ const Dashboard = () => {
           setLoading(false);
           console.log(notes);
         }
+      } else {
+        router.push("/login");
       }
     };
     fetchNotes();
+    console.log(notes);
   }, [user]);
 
   if (!user) return <div>Please log in to see your notes.</div>;

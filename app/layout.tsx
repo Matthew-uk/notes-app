@@ -3,6 +3,8 @@ import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { AuthProvider } from "@/context/authContext";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({
@@ -24,6 +26,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn(`font-poppins`, poppins.variable)}>
+        <ToastContainer
+          position="top-right"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          // theme="colored"
+        />
         <AuthProvider>{children}</AuthProvider>
       </body>
     </html>

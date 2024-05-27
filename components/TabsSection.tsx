@@ -28,15 +28,15 @@ const TabsSection = () => {
         </TabsList>
         <div className="ml-auto flex items-center gap-2">
           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
+            {/* <DropdownMenuTrigger asChild>
               <Button variant="outline" size="sm" className="h-8 gap-1">
                 <ListFilter className="h-3.5 w-3.5" />
                 <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
                   Filter
                 </span>
               </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
+            </DropdownMenuTrigger> */}
+            {/* <DropdownMenuContent align="end">
               <DropdownMenuLabel>Filter by</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuCheckboxItem checked>
@@ -44,14 +44,8 @@ const TabsSection = () => {
               </DropdownMenuCheckboxItem>
               <DropdownMenuCheckboxItem>Draft</DropdownMenuCheckboxItem>
               <DropdownMenuCheckboxItem>Archived</DropdownMenuCheckboxItem>
-            </DropdownMenuContent>
+            </DropdownMenuContent> */}
           </DropdownMenu>
-          <Button size="sm" variant="outline" className="h-8 gap-1">
-            <File className="h-3.5 w-3.5" />
-            <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-              Export
-            </span>
-          </Button>
           <AddNote />
         </div>
       </div>
