@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 interface RegisterFormInputs {
   email: string;
@@ -35,9 +36,11 @@ const Register = () => {
         data.password
       );
       console.log(res.user);
+      toast.success("Account Creation Successfully");
       router.push("/dashboard3");
-    } catch (error) {
-      console.error("Error registering:", error);
+    } catch (error: any) {
+      console.log(error);
+      toast.error(error.message);
     } finally {
       setLoading(false);
     }

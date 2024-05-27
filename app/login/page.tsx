@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 interface LoginFormInputs {
   email: string;
@@ -31,8 +32,10 @@ const Login = () => {
     try {
       await signInWithEmailAndPassword(auth, data.email, data.password);
       router.push("/dashboard3");
-    } catch (error) {
+      toast.success("Welcome back");
+    } catch (error: any) {
       console.error({ error });
+      toast.error(error.message);
     } finally {
       setLoading(false);
     }
